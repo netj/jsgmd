@@ -1,0 +1,25 @@
+found: sum= 84.0000 var=  0.0000 fitness= 84.0000
+-->8--
+          6       3 
+      4      23      10
+     24      16      13 
+  7      11      19      14
+ 17       5      12       8
+     20      21      18 
+      1      22       9
+         15       2 
+--8<--
+execution time: real 0.174797s user 0.003999s sys 0.006998s
+GA: P=50 K=10 sp=2 xover=2D/1 optrpl=2 optskip=10 optmax=1.142857
+generation #754: pop m= 77.920 v=116.047 f= 31.630 best_age=1
+best: found: sum= 84.0000 var=  0.0000 fitness= 84.0000
+-->8--
+          6       3 
+      4      23      10
+     24      16      13 
+  7      11      19      14
+ 17       5      12       8
+     20      21      18 
+      1      22       9
+         15       2 
+--8<--

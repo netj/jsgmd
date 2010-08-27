@@ -1,0 +1,25 @@
+found: sum= 71.0000 var=  0.0000 fitness=  0.4226 age=0
+-->8--
+          6      24 
+     16       3      20
+     23       5      11 
+  1      18       8      10
+ 12      15      21      14
+      2       4       7 
+     22       9      17
+         19      13 
+--8<--
+execution time: real 0.228716s user 0.030995s sys 0.000999s
+jsgmd24: M=7 A=2 B=3 P=512 K=256 sp=3 xover=2D/3 mut=6 replace_worst=51 aging explosion=128@0.005000*128 swap=2 hexspin=2
+generation #2: pop m= 75.919 v=7.678 f= -7.226
+best: found: sum= 71.0000 var=  0.0000 fitness=  0.4226 age=1
+-->8--
+          6      24 
+     16       3      20
+     23       5      11 
+  1      18       8      10
+ 12      15      21      14
+      2       4       7 
+     22       9      17
+         19      13 
+--8<--

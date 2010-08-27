@@ -1,0 +1,18 @@
+found: sum=169.0000 var=  0.0000 fitness=  0.3294 age=0
+-->8--
+             16      12       6 
+         34      53      45      40
+         11      31      19      33 
+     14      24       9      26       4
+     41      42      43      25      52 
+ 36      37      20      47      29      13
+  5       2      22       7      38      10
+     48      46      30      23      27 
+     44      21      32      28      50
+          8      18      49       3 
+         17      54      15      35
+             51       1      39 
+--8<--
+execution time: real 33.346655s user 11.669226s sys 0.038994s
+jsgmd54: M=19 A=3 B=5 P=512 K=256 sp=3 xover=2D/3 mut=13 replace_worst=51 aging explosion=128@0.005000*128 swap=2 hexspin=2
+generation #399: pop m=169.809 v=0.573 f= -0.242

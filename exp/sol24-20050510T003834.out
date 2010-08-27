@@ -1,0 +1,14 @@
+execution time: real 0.007277s user 0.000000s sys 0.000999s
+GA: P=10 K=7 sp=3 xover_cuts=2
+generation #3: pop m= 76.371 v= 48.318 f= 59.573 var0cnt=1 bage=1
+best: found: sum= 79.0000 var=  0.0000 fitness= 79.0000
+-->8--
+          5      11 
+      2      20       7
+     21       9       8 
+  6      22      24      13
+ 14       4       1      17
+     12      19      16 
+     23      18      15
+          3      10 
+--8<--

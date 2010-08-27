@@ -1,0 +1,14 @@
+execution time: real 0.012089s user 0.012998s sys 0.000000s
+GA: P=10 K=7 sp=3 xover_cuts=2
+generation #6: pop v=-0.783673 f=75.937417
+best: sum=80.000000 var=0.000000 fitness=80.000000 age=1
+
+          2      12 
+      7      11       3
+     20      23      13 
+ 14      17      18      15
+  6       1      16       8
+     22       5      10 
+     19      24      21
+          9       4 
+
