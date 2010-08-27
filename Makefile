@@ -1,5 +1,5 @@
 EXEC = jsgmd24 jsgmd54 jsgmd80 jsgmd110 jsgmd224 jsgmd198
-DOC = doc/jsgmd.ps
+DOC = doc/jsgmd.pdf
 SCRIPT = batch.sh data.sh log.sh plotlog.sh run.sh summary-all.sh summary.sh monitor.sh
 
 ifdef DEBUG
@@ -34,13 +34,13 @@ jsgmd198: jsgmd.c
 
 clean:
 	rm -f $(EXEC) $(DOC)
+	latexmk -c -pdf $(DOC:%.pdf=%.tex)
 
+doc: $(DOC)
 .SUFFIXES:
-.SUFFIXES: .tex .dvi .ps
-.tex.dvi:
-	cd "`dirname "$<"`"; latex "`basename "$<"`"
-.dvi.ps:
-	cd "`dirname "$<"`"; dvips "`basename "$<"`"
+.SUFFIXES: .tex .pdf
+.tex.pdf:
+	cd $(<D); latexmk -pdf $(<F)
 
 dist: all $(DOC)
 	zip -r tmp/jsgmd.zip  Makefile jsgmd.c $(SCRIPT) $(EXEC) $(DOC)
