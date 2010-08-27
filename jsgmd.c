@@ -40,7 +40,7 @@
 #define HEXSPINRATE 2
 
 #define DONE \
-    (solfound > 0 && (fbestidx == var0idx || gbest_age > P * 100 / N) \
+    ((solfound > 0 && (fbestidx == var0idx || gbest_age > P * 100 / N)) \
      || gbest_age > P * 2000 / N)
 
 #ifdef DEBUG
@@ -142,7 +142,7 @@ char numshares[N];
 /* filling idx */
 void initialize_encoding() {
     /* initialize idx for gene # assignment */
-    idx_t i,j,C; char L,H,k;
+    idx_t i,j,k, C, L,H;
     for_each_ij {
         for (k=0; k<6; k++)
             idx[i][j][k] = N+1;
@@ -177,7 +177,7 @@ void initialize_encoding() {
 #define share(k, i1, j1, k1, i2, j2, k2) \
         if (idx[i][j][k] > N) { \
             int gene_idx = next_gene_idx(); \
-            idx_t *share; char s = 0; \
+            idx_t *share; idx_t s = 0; \
             numshares[gene_idx] = 0; \
                                   assign(i   ,j   ,k ); \
             if_exists(i+i1, j+j1) assign(i+i1,j+j1,k1); \
@@ -217,7 +217,7 @@ void print_chromo(FILE *out, chromo c) {
 /* sum of all points in hexagon i,j */
 inline int hexsum(chromo c, idx_t i, idx_t j) {
     int s = 0;
-    char k;
+    idx_t k;
     idx_t *ij = idx[i][j];
     for (k=0; k<6; k++)
         s += c[ij[k]];
@@ -247,8 +247,7 @@ inline fitness_t fitness(int sum, int sqsum) {
 
 /* exhaustive local optimization */
 inline void exhaustive_opt(chromo c) {
-    idx_t i,j,C, tmp, g1,g2, *share;
-    char L,H, s,s1,s2, m,n,cm;
+    idx_t i,j,C, g1,g2, *share, L,H, m,n,cm, s,s1,s2;
     int hsum[2*(B-A)+1][B], p,q;
     int sqsum = 0, sum = 0, d, newsum, newsqsum;
     for_each_ij {
@@ -365,7 +364,7 @@ void print_pop(FILE *out, int n) {
     fprintf(out, "--8<--\n");
 #ifdef ENCODING_RANDOM
     printf("ENCODING: age=%d\n", encoding_age);
-    idx_t i,j,k,C; char L,H;
+    idx_t i,j,k, C, L,H;
     Chromo _c; chromo c = &_c;
     for_each_ij {
         for (k=0; k<6; k++)
@@ -534,7 +533,7 @@ void mutate(chromo c) {
 
 void repair(chromo c) {
     idx_t uses[N+2] = {0},
-          dups[N+2][N] = {0},
+          dups[N+2][N] = {{0}},
           i,j,k,g;
     /* count # of uses for each gene values, and remember their indexes */
     for (i=0; i<N; i++)
@@ -643,7 +642,9 @@ void initialize_population() {
 
 inline void begin_generation() {
     int n;
+#ifdef EXPLOSION
 beginning_of_generation:
+#endif /* EXPLOSION */
     ffsum = 0;
 #define ff(f) ((SELPRESS - 1) * (f - fworst) / (fbest - fworst) + 1)
     for (n=0; n<P; n++) {
@@ -665,7 +666,7 @@ beginning_of_generation:
             return 0;
     }
     qsort(rank, P, sizeof(int), cmp);
-#endif
+#endif /* REPLACE_WORST */
 #ifdef EXPLOSION
     double diff = varsum / P - eval[fbestidx]->var;
     if ((diff > 0 ? diff : -diff) < EXPLOSION_DIFF) {
@@ -687,7 +688,7 @@ beginning_of_generation:
             goto beginning_of_generation;
         }
     }
-#endif
+#endif /* EXPLOSION */
 }
 
 inline int pick() {
@@ -882,7 +883,7 @@ inline void generate_offsprings() {
  ****************************************************************************/
 
 int main(int argc, char *argv[]) {
-    srand((int)argv);
+    srand((unsigned int)argv);
     gettimeofday(&tbegin, NULL);
 
     int n;
