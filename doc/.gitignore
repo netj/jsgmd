@@ -1,0 +1,14 @@
+.DS_Store
+.*.sw?
+
+*.out
+*.aux
+*.lot
+*.lof
+*.log
+*.bbl
+*.blg
+*.toc
+*.fdb_latexmk
+/auto
+
