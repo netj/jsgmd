@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+case $1 in
+     24) echo -DA=2 -DB=3  -DT=60    ;;
+     54) echo -DA=3 -DB=5  -DT=300   ;;
+     80) echo -DA=3 -DB=6  -DT=900   ;;
+    110) echo -DA=3 -DB=7  -DT=1800  ;;
+    198) echo -DA=1 -DB=9  -DT=7200  ;;
+    224) echo -DA=3 -DB=10 -DT=7200  ;;
+    *)
+    # TODO solve A and B for $1
+    echo "jsgmd-config: Unknown size $1" >&2
+    exit 1
+    ;;
+esac
