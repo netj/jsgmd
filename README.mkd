@@ -1,0 +1,73 @@
+지수귀문도 | 地數龜文圖 | Jisugwimundo
+==================================
+
+Hexagonal Tortoise Puzzle
+-------------------------
+
+Jisugwimundo is an hexagonal tortoise puzzle studied by
+[Choi, Seokjeong (1646~1715)][choiseokjeong] during the
+[Joseon Dynasty][joseon].  The puzzle was named after its look that
+resembles the shell of a turtle.  The puzzle consists of adjacent
+hexagons whose vertices are distinct numbers where their sum for each
+hexagon are all equal.  Here's a Jisugwimundo for 24 numbers:
+
+             12       2 
+         14      15      19     
+         18      13       7 
+      1       5      21       6     
+     23      10      17       4     
+         20      11      22 
+          9       3      16     
+             24       8 
+
+It has 7 hexagons all having 77 as the sum of its six vertices.
+Notice that adjacent hexagons share its vertices of shared edges.
+There are various sizes of Jisugwimundo depending on the number of
+consisting hexagons: 24, 30, 54, 98, 110, 198, 224, and more.  Choi,
+Seokjeong found rules for solving some sizes, but in general, it is
+unknown how one can generate a Jisugwimundo of an arbitrary size.
+Since a solution can be thought as a sequence of distinct numbers, the
+search space is very large, actually an order of factorial to the
+size.  It is still very hard to find a solution whereas one can
+observe that there are relatively many Jisugwimundo's of a particular
+size.
+
+
+A Solution with Genetic Algorithm
+---------------------------------
+
+To find a solution from a very large search space,
+[genetic algorithm][] is the effective way to go.  This directory
+includes an implementation of a genetic algorithm for finding
+solutions for various size of the puzzle.  It also includes LaTeX
+source code for a document written in Korean that describes details of
+the methods used in the genetic algorithm.  The original
+implementation is done in C, and uses Pthread to accelerate the
+computation.  You can build everything by running command: `make all`.
+
+This work was initially done by Jaeho Shin in 2005 as a term project
+of a graduate course on genetic algorithm in Seoul National
+University.  Some time after the class shifted to a new problem, this
+solution is made available to the public.  It will probably serve as a
+fairly nice example of a genetic algorithm implementation for solving
+similar kinds of [other puzzles][], such as the [magic square][].
+With the rise of [GPGPU][]s these days, it seems to be a great example
+to practice [CUDA][] or [OpenCL][].
+
+For more readings, check the following (most in Korean):
+
+ * [Tortoise Puzzle article of Kangwon University](http://www.kangwon.ac.kr/~sericc/sci_lab/algorithm/tortoise_puzzle/tortoise_puzzle.html)
+ * [Jaeho's article on Jisugwimundo](http://netj.org/2005/06/159158100)
+
+
+[choiseokjeong]: http://ko.wikipedia.org/wiki/%EC%B5%9C%EC%84%9D%EC%A0%95
+[joseon]: http://en.wikipedia.org/wiki/Joseon_Dynasty
+
+[genetic algorithm]: http://en.wikipedia.org/wiki/Genetic_algorithm
+
+[other puzzles]: http://en.wikipedia.org/wiki/Magic_square#See_also
+[magic square]: http://en.wikipedia.org/wiki/Magic_square
+
+[gpgpu]: http://en.wikipedia.org/wiki/GPGPU
+[cuda]: http://en.wikipedia.org/wiki/CUDA
+[opencl]: http://en.wikipedia.org/wiki/OpenCL
