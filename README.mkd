@@ -23,9 +23,9 @@ hexagon are all equal.  Here's a Jisugwimundo for 24 numbers:
 It has 7 hexagons all having 77 as the sum of its six vertices.
 Notice that adjacent hexagons share its vertices of shared edges.
 There are various sizes of Jisugwimundo depending on the number of
-consisting hexagons: 16, 24, 30, 54, 98, 110, 198, 224, and more.  Choi,
-Seokjeong found rules for solving some sizes, but in general, it is
-unknown how one can generate a Jisugwimundo of an arbitrary size.
+consisting hexagons: 16, 24, 30, 54, 80, 96, 110, 198, 224, and more.
+Choi, Seokjeong found rules for solving some sizes, but in general, it
+is unknown how one can generate a Jisugwimundo of an arbitrary size.
 Since a solution can be thought as a sequence of distinct numbers, the
 search space is very large, actually an order of factorial to the
 size.  It is still very hard to find a solution whereas one can
@@ -43,16 +43,17 @@ solutions for various size of the puzzle.  It also includes LaTeX
 source code for a document written in Korean that describes details of
 the methods used in the genetic algorithm.  The original
 implementation is done in C, and uses Pthread to accelerate the
-computation.  You can build everything by running command: `make all`.
+computation.  You can build everything by running command: `make all
+doc`.
 
 This work was initially done by Jaeho Shin in 2005 as a term project
 of a graduate course on genetic algorithm in Seoul National
 University.  Some time after the class shifted to a new problem, this
-solution was made available to the public.  It will probably serve as a
-fairly nice example of a genetic algorithm implementation for solving
-similar kinds of [other puzzles][], such as the [magic square][].
-With the rise of [GPGPU][]s these days, it seems to be a great example
-to practice [CUDA][] or [OpenCL][].
+solution was made available to the public.  It will probably serve as
+a fairly nice example of a genetic algorithm implementation for
+solving similar kinds of [other puzzles][], such as the
+[magic square][].  With the rise of [GPGPU][]s these days, it seems to
+be a great example to practice [CUDA][] or [OpenCL][].
 
 For more readings, check the following (most in Korean):
 

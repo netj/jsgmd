@@ -1,6 +1,6 @@
 # Makefile for jsgmd
 
-EXEC = jsgmd24 jsgmd54 jsgmd80 jsgmd110 jsgmd224 jsgmd198
+EXEC = jsgmd-16 jsgmd-24 jsgmd-30 jsgmd-54 jsgmd-80 jsgmd-96 jsgmd-110 jsgmd-198 jsgmd-224
 DOC = doc/jsgmd.pdf
 SCRIPT = batch.sh data.sh log.sh plotlog.sh run.sh summary-all.sh summary.sh monitor.sh
 
@@ -24,14 +24,15 @@ endif
 
 all: $(EXEC)
 
-jsgmd%:: jsgmd.c
+jsgmd-%: jsgmd.c
 	$(CC) $(CFLAGS) -lm -o $@ $^ $(shell ./jsgmd-config $*)
+
 
 doc: $(DOC)
 .SUFFIXES:
 .SUFFIXES: .tex .pdf
 .tex.pdf:
-	cd $(<D); latexmk -pdf $(<F)
+	latexmk -cd -pdf $<
 
 
 dist: all doc
@@ -41,5 +42,5 @@ dist: all doc
 clean:
 	rm -f $(EXEC)
 distclean: clean
-	latexmk -C -pdf $(DOC:%.pdf=%.tex)
+	latexmk -CA -cd -pdf $(DOC:%.pdf=%.tex)
 

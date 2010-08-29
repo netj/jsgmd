@@ -1,9 +1,12 @@
 #!/bin/sh
 set -eu
 case $1 in
+     16) echo -DA=1 -DB=2  -DT=30    ;;
      24) echo -DA=2 -DB=3  -DT=60    ;;
+     30) echo -DA=1 -DB=3  -DT=90    ;;
      54) echo -DA=3 -DB=5  -DT=300   ;;
      80) echo -DA=3 -DB=6  -DT=900   ;;
+     96) echo -DA=1 -DB=6  -DT=900   ;;
     110) echo -DA=3 -DB=7  -DT=1800  ;;
     198) echo -DA=1 -DB=9  -DT=7200  ;;
     224) echo -DA=3 -DB=10 -DT=7200  ;;

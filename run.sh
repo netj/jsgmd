@@ -1,7 +1,7 @@
 #!/bin/sh
 
 id=$1
-exe=./jsgmd$id
+exe=./jsgmd-$id
 if [ -x $exe ]; then
     tmp=`mktemp /tmp/jsgmd.XXXXXX`
     if "$exe" >$tmp; then

@@ -1,4 +1,4 @@
 .DS_Store
 .*.sw?
 
-/jsgmd[1-9]*
+/jsgmd-[0-9]*

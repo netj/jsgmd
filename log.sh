@@ -2,7 +2,7 @@
 
 interval=0.5
 id=$1; shift
-exe=./jsgmd$id
+exe=./jsgmd-$id
 
 if [ -x $exe ]; then
     tmp=`mktemp -d /tmp/jsgmd.XXXXXX`
