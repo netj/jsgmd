@@ -105,7 +105,7 @@ int explosion_countdown = EXPLOSION_THRESHOLD;
 #endif
 
 #define rnd_one() \
-    (((double)rand())/((double)RAND_MAX + 1.0))
+    (((double)random())/((double)0x7fffffff + 1.0))
 #define rnd_f(ub) ((double)(ub) * ((rnd_one() + rnd_one()) / 2.0))
 #define rnd(n) ((unsigned int)rnd_f(n))
 #define min(a, b) (((a) < (b)) ? (a) : (b))
@@ -881,7 +881,7 @@ inline void generate_offsprings() {
  ****************************************************************************/
 
 int main(int argc, char *argv[]) {
-    srand((unsigned int)argv);
+    srandomdev();
     gettimeofday(&tbegin, NULL);
 
     int n;
