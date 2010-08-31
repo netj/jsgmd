@@ -730,23 +730,21 @@ inline void replace_population() {
     int n;
     int r = P-1;
     for (n=0; n<K; n++) {
-        int p1 = parent1[n],
-            p2 = parent2[n],
-            p = p1, q = p2;
 #ifdef REPLACE_WORST
-        q = rank[r--];
+        int p = rank[r--];
         if (!rnd(REPLACE_WORST))
             r--;
 #else
+        int p = parent2[n];
         if (ff[p1] < ff[p2])
-            p = p2, q = p1;
+            p = parent1[n];
 #endif
         chromo c;
-        c = pop[q], pop[q] = offspring[n], offspring[n] = c;
-        sync_evaluation(q, offspring_eval[n]);
+        c = pop[p], pop[p] = offspring[n], offspring[n] = c;
+        sync_evaluation(p, offspring_eval[n]);
         evaluation e;
-        e = eval[q], eval[q] = offspring_eval[n], offspring_eval[n] = e;
-        check_solution(q);
+        e = eval[p], eval[p] = offspring_eval[n], offspring_eval[n] = e;
+        check_solution(p);
     }
 }
 
