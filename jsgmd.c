@@ -1,5 +1,5 @@
 /****************************************************************************
- * 4541.681A Genetic Algorithm (2005/Spring) ¡ˆºˆ±ÕπÆµµ                     *
+ * 4541.681A Genetic Algorithm (2005/Spring) ÏßÄÏàòÍ∑ÄÎ¨∏ÎèÑ                     *
  * 2004-23580  Jaeho Shin <netj@ropas.snu.ac.kr>                            *
  * Created: 2005-04-26                                                      *
  ****************************************************************************/
@@ -73,6 +73,13 @@ typedef struct _evaluation {
     int age;
 } Evaluation;
 typedef Evaluation *evaluation;
+
+int cmp(const void *a, const void *b);
+void GA();
+void exhaustive_opt(chromo c);
+void generate_offspring(int n);
+void replace_population();
+void update_evaluation(int n, evaluation new);
 
 #define new_chromosome() malloc(N * sizeof(gene))
 #define copy_chromosome(dest, src) memcpy(dest, src, N * sizeof(gene))
@@ -640,6 +647,17 @@ void initialize_population() {
     }
 }
 
+int cmp(const void *a, const void *b) {
+    fitness_t fa = ff[*(int *)a],
+              fb = ff[*(int *)b];
+    if (fa < fb)
+        return +1;
+    else if (fa > fb)
+        return -1;
+    else
+        return 0;
+}
+
 inline void begin_generation() {
     int n;
 #ifdef EXPLOSION
@@ -655,16 +673,6 @@ beginning_of_generation:
     }
 #undef ff
 #ifdef REPLACE_WORST
-    int cmp(const void *a, const void *b) {
-        fitness_t fa = ff[*(int *)a],
-                  fb = ff[*(int *)b];
-        if (fa < fb)
-            return +1;
-        else if (fa > fb)
-            return -1;
-        else
-            return 0;
-    }
     qsort(rank, P, sizeof(int), cmp);
 #endif /* REPLACE_WORST */
 #ifdef EXPLOSION
